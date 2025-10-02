@@ -16,7 +16,11 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-
+          
+      - name: Set Execution Policy
+        run: Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+        shell: powershell
+        
       - name: package Spring Boot application
         run: mvn clean package -DskipTests
         shell: powershell
