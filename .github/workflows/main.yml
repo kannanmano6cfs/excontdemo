@@ -35,6 +35,6 @@ jobs:
           docker build -t local/springboot-app:latest .
           
           # Run the new container, exposing port 8080
-          docker run -d -p 8081:8081 --name spring-app local/springboot-app:latest
+          docker run -d -p 8081:8081 --net netoct25 --name spring-app local/springboot-app:latest
         # Use pwsh (PowerShell Core) for reliable Docker execution on Windows self-hosted runner
         shell: powershell
