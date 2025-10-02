@@ -37,4 +37,4 @@ jobs:
           # Run the new container, exposing port 8080
           docker run -d -p 8081:8081 --name spring-app local/springboot-app:latest
         # Use pwsh (PowerShell Core) for reliable Docker execution on Windows self-hosted runner
-        shell: pwsh
+        shell: powershell
