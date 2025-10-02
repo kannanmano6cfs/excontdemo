@@ -5,7 +5,7 @@ on:
 
 jobs:
   deploy-local:
-    runs-on: [self-hosted, windows, local-docker] 
+    runs-on: self-hosted 
 
     steps:
       - name: checkout repository
