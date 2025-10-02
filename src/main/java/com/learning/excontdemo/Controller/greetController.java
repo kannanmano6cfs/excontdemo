@@ -17,7 +17,7 @@ public class greetController {
 
     @GetMapping("/")
     public String greet() {
-        return "Hello World!! Iam running on Docker desktop!!";
+        return "Hello World!! Sample aplication for CICD pipeline in Github actions!!";
     }
 
     @PostMapping("/new")
