@@ -19,7 +19,7 @@ jobs:
 
       - name: package Spring Boot application
         run: mvn clean package -DskipTests
-        shell: bash
+        shell: powershell
 
       - name: build and run Docker image locally
         run: |
