@@ -1,0 +1,36 @@
+name: Deploy to Docker Desktop
+
+on:
+  push:
+
+jobs:
+  deploy-local:
+    runs-on: [self-hosted, windows, local-docker] 
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+        
+      - name: set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: package Spring Boot application
+        run: mvn clean package -DskipTests
+        shell: bash
+
+      - name: build and run Docker image locally
+        run: |
+          # Stop and remove any existing container running on port 8080
+          docker stop spring-app || true
+          docker rm spring-app || true
+          
+          # Build a new image with a local tag
+          docker build -t local/springboot-app:latest .
+          
+          # Run the new container, exposing port 8080
+          docker run -d -p 8081:8081 --name spring-app local/springboot-app:latest
+        # Use pwsh (PowerShell Core) for reliable Docker execution on Windows self-hosted runner
+        shell: pwsh
