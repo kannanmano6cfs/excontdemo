@@ -28,8 +28,8 @@ jobs:
       - name: build and run Docker image locally
         run: |
           # Stop and remove any existing container running on port 8080
-          docker stop spring-app || true
-          docker rm spring-app || true
+          docker stop spring-app
+          docker rm spring-app
           
           # Build a new image with a local tag
           docker build -t local/springboot-app:latest .
